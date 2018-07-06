@@ -23,3 +23,8 @@ If the test suite passes, you'll be ready to run the app in a local server:
 ```
 $ rails server
 ```
+
+To set guard up to watch for file changes and execute tests:
+```
+$ bundle exec guard
+```
