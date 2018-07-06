@@ -7,5 +7,6 @@ Rails.application.routes.draw do
 
   get 'static_pages/contact'
 
-  root "application#hello"
+  #Set root page to be whatever you want
+  root 'static_pages#home'
 end
