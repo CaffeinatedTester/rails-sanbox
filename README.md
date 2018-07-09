@@ -1,5 +1,22 @@
-## Getting started
+# Caffeinated Tester | Rails | Training
 
+## Versions / Dependencies
+```
+Ruby:       2.5.1
+Node:       8.9.4
+Postgres:   Unknown...
+```
+
+Notes: I use RVM to make life a lot easier
+```bash
+# use correct ruby version
+$ rvm user 2.5.1
+
+# use correct gemset (to avoid conflicts with other apps)
+$ rvm gemset use railsApp
+```
+
+## Getting started
 To get started with the app, clone the repo and then install the needed gems:
 
 ```
@@ -28,3 +45,6 @@ To set guard up to watch for file changes and execute tests:
 ```
 $ bundle exec guard
 ```
+
+## Structure
+This project follows the conventional rails structure.
