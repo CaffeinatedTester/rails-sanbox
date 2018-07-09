@@ -1,10 +1,10 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "microposts", '#', id: "logo" %>
+    <%= link_to "microposts", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li test-id="home-header-link"><%= link_to "Home",   '#' %></li>
-        <li test-id="help-header-link"><%= link_to "Help",   '#' %></li>
+        <li test-id="home-header-link"><%= link_to "Home", root_path %></li>
+        <li test-id="help-header-link"><%= link_to "Help", help_path %></li>
         <li test-id="login-header-link"><%= link_to "Log in", '#' %></li>
       </ul>
     </nav>
