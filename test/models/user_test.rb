@@ -3,7 +3,7 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
 
   def setup
-    @user = User.new(name: "Test User", email: "example@example.com", password: "foobar", password_confirmation: "foobar")
+    @user = User.new(name: "Test User", email: "example@example.com", password: "SecurePass.123", password_confirmation: "SecurePass.123")
   end
 
   test "should be valid" do
@@ -64,5 +64,31 @@ class UserTest < ActiveSupport::TestCase
     @user.save
     @user.reload
     assert @user.email == mixed_email.downcase, "#{@user.email} should be downcase and match #{mixed_email.downcase}"
+  end
+
+  test "password should be present" do
+    @user.password = @user.password_confirmation = " " * 6
+    assert_not @user.valid?
+  end
+
+  test "password should have a minimum length" do
+    @user.password = @user.password_confirmation = "a" * 5
+    assert_not @user.valid?
+  end
+
+  test "password must have be a secure format" do
+    secure_pass = %w[.1a1asdaSd SecurePass1 qwefqwefw1. hello.123]
+    secure_pass.each do |pass|
+      @user.password = @user.password_confirmation = pass
+      assert @user.valid?, "#{pass.inspect} should be valid"
+    end
+  end
+
+  test "password must reject a non secure format" do
+    insecure_pass = %w[hello123 123123123123 password. PASSWORD111]
+    insecure_pass.each do |pass|
+      @user.password = @user.password_confirmation = pass
+      assert_not @user.valid?, "#{pass.inspect} should not be valid"
+    end
   end
 end
