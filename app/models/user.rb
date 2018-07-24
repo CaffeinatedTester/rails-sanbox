@@ -29,4 +29,11 @@ class User < ApplicationRecord
   validates :password, presence: true, length: {minimum: 6, maximum: 25},
    format: {:with => PASSWORD_VALIDATOR,
    message: "must contain 3 of the following 4: a lowercase letter, an uppercase letter, a digit, a non-word character or symbol"}
+
+     # Returns the hash digest of the given string.
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
 end
