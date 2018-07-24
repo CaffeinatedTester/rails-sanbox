@@ -1,1 +1,4 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+valid_user:
+  name: David Skinner
+  email: valid_user_1@example.com
+  password_digest: <%= User.digest('Tester.01') %>
